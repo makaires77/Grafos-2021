@@ -6,6 +6,14 @@ from networkx.generators.classic import empty_graph, path_graph, complete_graph
 
 #DEFINICAO DAS FUNCOES
 
+def func_graph_conected (Grafo):
+    #verifica se grafo é regular
+    fl_graph_conected = True
+    for node in Grafo:
+        if (Grafo.degree(node)>=1) and (fl_graph_conected):
+            fl_graph_conected = False
+    return fl_graph_conected
+
 def func_graph_regular (Grafo):
     #verifica se grafo é regular
     fl_graph_regular = True
@@ -14,7 +22,7 @@ def func_graph_regular (Grafo):
         if (first_degree != Grafo.degree(node)):
             fl_graph_regular = False
     return fl_graph_regular
-            
+
 
 def func_graph_euler (Grafo):
     #verifica se todos os vértices têm grau par
@@ -46,10 +54,10 @@ def func_graph_semi_euler (Grafo):
 
 G=nx.Graph()
 G.add_node(1)
-# G.add_nodes_from([2, 3, 4, 5, 6,7,8,9,10])
+G.add_nodes_from([2, 3, 4, 5, 6,7,8,9,10])
 
 #Regular
-G.add_nodes_from([2, 3, 4, 5, 6, 7, 8])
+#G.add_nodes_from([2, 3, 4, 5, 6, 7, 8])
 G.add_edges_from([(1, 2), (1,5), (1,4), (2,3), (3,4), (4,8), (8,5), (8,7), (6,2), (3,7), (6,7), (6,5)])
 
 #Regular-Fleury
@@ -66,6 +74,11 @@ G.add_edges_from([(1, 2), (1,5), (1,4), (2,3), (3,4), (4,8), (8,5), (8,7), (6,2)
 # G.add_edges_from([(1, 2), (1,3), (2,4), (10,6), (6,8), (3,7), (5,7), (4,5), (8,9), (8,10), (9,4), (3,4),(2,9)])
     
 print("\n"+"=========================")
+
+if (func_graph_conected(G)):
+    print("\n"+"O Grafo é Conectado")
+else:
+    print("\n"+"O Grafo não é Conectado")
 
 
 if (func_graph_regular(G)):
