@@ -16,7 +16,7 @@ pd.set_option('display.max_colwidth', None)
 pd.set_option('colheader_justify', 'left')
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-shp_path = open(pathlib.Path(os.getcwd(), "E:/graph_kcolor/shp/", "estados_2010.shp"), "r", encoding="utf-8")
+shp_path = open(pathlib.Path(os.getcwd(), "estados_2010.shp"), "r", encoding="utf-8")
 
 sf = shp.Reader(shp_path, encoding='ISO-8859-15')
 
