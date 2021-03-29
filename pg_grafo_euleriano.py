@@ -12,7 +12,7 @@ def func_graph_conected (Grafo):
     for node in Grafo:
         if (Grafo.degree(node)<1) and (fl_graph_conected):
             fl_graph_conected = False
-        # analisar se para ser conectado precisa verificar o grau do vertice ou não
+        # precisa ou não analisar se para ser conectado o grau dos vertices?
     return fl_graph_conected
 
 def func_graph_regular (Grafo):
