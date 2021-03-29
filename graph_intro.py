@@ -3,19 +3,21 @@ from networkx.algorithms import bipartite
 from tqdm.notebook import trange, tqdm
 from matplotlib import animation, rc
 
+import pathlib
 import matplotlib.pyplot as plt
 import shapefile as shp
 import networkx as nx
 import pandas as pd
 import numpy as np
+import os
 import warnings
 
 pd.set_option('display.max_colwidth', None)
 pd.set_option('colheader_justify', 'left')
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-path = 'E:/'
-shp_path = "E:\graph_kcolor\shp\estados_2010.shp"
+shp_path = open(pathlib.Path(os.getcwd(), "E:/graph_kcolor/shp/", "estados_2010.shp"), "r", encoding="utf-8")
+
 sf = shp.Reader(shp_path, encoding='ISO-8859-15')
 
 # Função de leitura do arquivo SHP
