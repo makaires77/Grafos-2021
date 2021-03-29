@@ -10,8 +10,9 @@ def func_graph_conected (Grafo):
     #verifica se grafo é regular
     fl_graph_conected = True
     for node in Grafo:
-        if (Grafo.degree(node)>=1) and (fl_graph_conected):
+        if (Grafo.degree(node)<1) and (fl_graph_conected):
             fl_graph_conected = False
+        # analisar se para ser conectado precisa verificar o grau do vertice ou não
     return fl_graph_conected
 
 def func_graph_regular (Grafo):
@@ -23,6 +24,23 @@ def func_graph_regular (Grafo):
             fl_graph_regular = False
     return fl_graph_regular
 
+def func_cycle_euler (Grafo):
+    #verifica se todos os vértices têm grau par e sao conectados
+    fl_even_edge = True
+    fl_graph_conected = True
+
+    for node in Grafo:
+        if (Grafo.degree(node) % 2 != 0):
+            fl_even_edge = False
+        if (Grafo.degree(node)<1) and (fl_graph_conected):
+            fl_graph_conected = False
+    
+    if (fl_even_edge and fl_graph_conected):
+        fl_cycle_euler = True
+    else:
+        fl_cycle_euler = False
+
+    return fl_cycle_euler
 
 def func_graph_euler (Grafo):
     #verifica se todos os vértices têm grau par
@@ -54,18 +72,18 @@ def func_graph_semi_euler (Grafo):
 
 G=nx.Graph()
 G.add_node(1)
-G.add_nodes_from([2, 3, 4, 5, 6,7,8,9,10])
+# G.add_nodes_from([2, 3, 4, 5, 6,7,8,9,10])
 
 #Regular
-#G.add_nodes_from([2, 3, 4, 5, 6, 7, 8])
-G.add_edges_from([(1, 2), (1,5), (1,4), (2,3), (3,4), (4,8), (8,5), (8,7), (6,2), (3,7), (6,7), (6,5)])
+# G.add_nodes_from([2, 3, 4, 5, 6, 7, 8])
+# G.add_edges_from([(1, 2), (1,5), (1,4), (2,3), (3,4), (4,8), (8,5), (8,7), (6,2), (3,7), (6,7), (6,5)])
 
 #Regular-Fleury
 # G.add_nodes_from([2, 3, 4, 5, 6, 7, 8])
 # G.add_edges_from([(1,2),(1,3),(1,6),(1,8),(2,5),(2,7),(2,4),(3,8),(4,7),(5,7),(7,8),(8,6)])
 
 #Euleriano
-# G.add_edges_from([(1, 2), (1,3), (2,4), (10,6), (6,8), (3,7), (10,7), (4,5), (5,9), (8,10), (9,10)])
+G.add_edges_from([(1, 2), (1,3), (2,4), (10,6), (6,8), (3,7), (10,7), (4,5), (5,9), (8,10), (9,10)])
 
 #Semi Euleriano
 # G.add_edges_from([(1, 2), (1,3), (2,4), (10,6), (6,8), (3,7), (5,7), (4,5), (8,9), (8,10), (9,4)])
@@ -80,11 +98,16 @@ if (func_graph_conected(G)):
 else:
     print("\n"+"O Grafo não é Conectado")
 
-
 if (func_graph_regular(G)):
     print("\n"+"O Grafo é Regurar")
 else:
     print("\n"+"O Grafo não é Regular")
+
+if func_cycle_euler(G):
+    print("\n"+"O Grafo tem Ciclo Euleriano")
+
+else:
+    print("\n"+"O Grafo não tem Ciclo Euleriano")
 
 if func_graph_euler(G):
     print("\n"+"O Grafo é Euleriano porque só tem vértices com grau par")
