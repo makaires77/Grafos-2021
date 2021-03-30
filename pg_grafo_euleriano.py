@@ -12,7 +12,8 @@ def func_graph_conected (Grafo):
     for node in Grafo:
         if (Grafo.degree(node)<1) and (fl_graph_conected):
             fl_graph_conected = False
-        # analisar se para ser conectado precisa verificar o grau do vertice ou não
+        # precisa ou não analisar se para ser conectado o grau dos vertices?
+        # no caso de 2 triangulos ligados por uma ponte.
     return fl_graph_conected
 
 def func_graph_regular (Grafo):
@@ -63,6 +64,9 @@ def func_graph_semi_euler (Grafo):
         return False
     else:
         return True
+
+# def func_bridge_euler(Grafo, v_orig):
+#     return
 
 # def func_path_euler(Grafo, v_orig):
 #     return
