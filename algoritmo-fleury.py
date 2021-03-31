@@ -12,9 +12,9 @@ class FleuryException(Exception):
 
 class Fleury:
 
-    COLOR_WHITE = 'white'
-    COLOR_GRAY  = 'gray'
-    COLOR_BLACK = 'black'
+    cor_WHITE = 'white'
+    cor_GRAY  = 'gray'
+    cor_BLACK = 'black'
 
     def __init__(self, graph):
         """
@@ -54,17 +54,17 @@ class Fleury:
         start_node = list(G)[0]
         color = {}
         for v in G:
-            color[v] = Fleury.COLOR_WHITE
-        color[start_node] = Fleury.COLOR_GRAY
+            color[v] = Fleury.cor_WHITE
+        color[start_node] = Fleury.cor_GRAY
         S = [start_node]
         while len(S) != 0:
             u = S.pop()
             for v in G[u]:
-                if color[v] == Fleury.COLOR_WHITE:
-                    color[v] = Fleury.COLOR_GRAY
+                if color[v] == Fleury.cor_WHITE:
+                    color[v] = Fleury.cor_GRAY
                     S.append(v)
-                color[u] = Fleury.COLOR_BLACK
-        return list(color.values()).count(Fleury.COLOR_BLACK) == len(G)
+                color[u] = Fleury.cor_BLACK
+        return list(color.values()).count(Fleury.cor_BLACK) == len(G)
 
     def even_degree_nodes(self, G):
         """
