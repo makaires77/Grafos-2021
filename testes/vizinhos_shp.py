@@ -30,7 +30,7 @@ of = r"testes/error.txt"
 # #     print(point)
 
 # shapes = sf_estados.shapeRecords()
-shapes = sf_municipios.shapeRecords()
+shapes = sf_estados.shapeRecords()
 ids    = np.zeros(len(shapes))
 
 output = open(of, 'w')
@@ -38,6 +38,7 @@ output.close()
 output = open(of, 'a')
 
 VIZINHOS=[]
+pontos=[]
 c=0
 for shp in shapes:
     print(shp.record[0:-1])
@@ -47,7 +48,9 @@ for shp in shapes:
         point = shp.shape.points[i]
         nome = shp.record[1]
         ponto = np.array([nome, point[0], point[1]])
-        print(ponto)
+        pontos.append(ponto)
+        for ponto in pontos:
+            longmax = max(ponto[0])
 
     # Get the bounding box of the 4th shape.
     # Round coordinates to 3 decimal places
