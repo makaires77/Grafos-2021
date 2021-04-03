@@ -53,7 +53,7 @@ def tsp_permutacao(matriz, s):
 # Chamada da função
 if __name__ == "__main__":
 
-	# matriz de adjacência que representa o grafo do hexagono completo
+	# matriz de adjacência que representa o grafo do hexágono completo
 	# matriz=[[ 0, 18, 17, 23, 12, 19], 
     #         [18,  0, 26, 31, 20, 30],
     #         [17, 26,  0, 16, 11,  9],
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     #         [np.inf,      5,      0, np.inf, np.inf, np.inf, np.inf],
     #         [    40,     25,     17,      0, np.inf,     11,     20],
     #         [np.inf,      5, np.inf, np.inf,      0, np.inf, np.inf],
-	# 		[np.inf, np.inf,      8,     11, np.inf,      0,      6],
+	# 		  [np.inf, np.inf,      8,     11, np.inf,      0,      6],
     #         [np.inf, np.inf, np.inf,     20, np.inf,      6,      0]]
     
 	V = len(matriz)
